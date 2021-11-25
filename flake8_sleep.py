@@ -6,8 +6,6 @@ from typing import List
 from typing import Tuple
 from typing import Type
 
-import astpretty
-
 if sys.version_info < (3, 8):  # pragma: no cover (<PY38)
     import importlib_metadata
 else:  # pragma: no cover (PY38+)
@@ -28,7 +26,6 @@ class Visitor(ast.NodeVisitor):
         self.generic_visit(node)
 
     def visit_Call(self, node: ast.Call) -> Any:
-        astpretty.pprint(node)
         if isinstance(node.func, ast.Name) and node.func.id == "sleep":
             self.errors.append(
                 (node.func.lineno, node.func.col_offset, SLP100),
