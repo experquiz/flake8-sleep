@@ -21,8 +21,13 @@ def test_ok(s):
     assert results(s) == set()
 
 
-def test_return_100():
+def test_return_100_name():
     s = "sleep(1)"
+    assert results(s) == {"1:0: SLP100 sleep found"}
+
+
+def test_return_100_attr():
+    s = "time.sleep(1)"
     assert results(s) == {"1:0: SLP100 sleep found"}
 
 

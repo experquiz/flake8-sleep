@@ -30,7 +30,11 @@ class Visitor(ast.NodeVisitor):
             self.errors.append(
                 (node.func.lineno, node.func.col_offset, SLP100),
             )
-            self.generic_visit(node)
+        if isinstance(node.func, ast.Attribute) and node.func.attr == "sleep":
+            self.errors.append(
+                (node.func.lineno, node.func.col_offset, SLP100),
+            )
+        self.generic_visit(node)
 
 
 class Plugin:
