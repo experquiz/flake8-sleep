@@ -1,18 +1,12 @@
-# flake8-sleep
-flake8 plugin which checks that sleep is not used
-
 flake8-sleep
 ===========
 
 flake8 plugin which checks for use of sleep function.
 
 ## installation
-
-<!-- `pip install flake8-2020` -->
-Until pipy release, it will have to be done using git clone and local pip install:
+Using Pypi:
 ```shell
-git clone git@github.com:Nathanmalnoury/flake8-sleep.git
-pip install ./flake8-sleep
+pip install flake8-sleep
 ```
 
 
@@ -30,4 +24,10 @@ Using sleep function should be done carefully, as it will slow down an applicati
 s
 ## as a pre-commit hook
 
-Not available until pypi release.
+```
+-   repo: https://github.com/pycqa/flake8
+    rev: 3.7.8
+    hooks:
+    -   id: flake8
+        additional_dependencies: [flake8-sleep]
+```
